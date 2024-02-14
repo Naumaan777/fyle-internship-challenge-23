@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>John Doe</title>
+    <link rel="stylesheet" href="app.component.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    
+    <header>
+      <div>
+        <input [(ngModel)]="username" placeholder="Enter Github Username">
+        <button (click)="search()">Search</button>
+    </div>
+    <div *ngIf="userNotFound">
+        <p>User not found. Please try again.</p>
+    </div>
+
+    <div *ngIf="isLoading">
+      <!-- Your skeleton loader goes here -->
+    </div>
+    
+    <div *ngIf="!isLoading">
+      <div *ngFor="let repo of repos">
+        {{repo}}
+      </div>
+    </div>
+    
+
+    <div *ngIf="user && !userNotFound">
+        <!-- User and repo information goes here -->
+        <div>
+        <select [(ngModel)]="pageSize" (change)="changePageSize(pageSize)">
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+            <option value="60">60</option>
+            <option value="70">70</option>
+            <option value="80">80</option>
+            <option value="90">90</option>
+            <option value="100">100</option>
+        </select>
+        </div>
+        <div>
+        <button (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+        <button (click)="changePage(currentPage + 1)">Next</button>
+        </div>
+    </div>
+        
+      </div>
+      
+      <div class="profile">
+        <img class="profile-pic" src="img1.png" alt="John Doe" />
+        <div class="bio">
+          <h1>John Doe</h1>
+          <p>
+            Well qualified full stack developer || E.x Microsoft SDE Intern
+          </p>
+          <p><i class="fas fa-map-marker-alt"></i> Orlando</p>
+          <!-- <p>Twitter: <a href="https://twitter.com/john_doe">john_doe</a></p> -->
+          <p>
+            Twitter:
+            <a href="https://twitter.com/john_doe"
+              >https://twitter.com/john_doe</a
+            >
+          </p>
+        </div>
+      </div>
+      <p class="github">
+        <a href="https://github.com/john_doe "
+          ><i class="fas fa-link"></i> https://github.com/john_doe
+        </a>
+      </p>
+      
+    </header>
+
+    <main>
+      
+      
+      <div *ngIf="user && !userNotFound">
+        
+        <div class="repository-container">
+          <div class="repository">
+            <h2>Heroes</h2>
+            <p>Heroes description goes here</p>
+            <p class="tags">
+              <i class="fab fa-js">JavaScript</i>
+              <i class="fab fa-angular">Angular</i>
+              <i class="fab fa-js-square">Angular JS</i>
+              <i class="fab fa-angular">Angular 2+</i>
+            </p>
+          </div>
+  
+          <div class="repository">
+            <h2>Heroes</h2>
+            <p>Heroes description goes here</p>
+            <p class="tags">
+              <i class="fab fa-js">JavaScript</i> &nbsp;
+              <i class="fab fa-react">React</i> &nbsp;
+            </p>
+          </div>
+  
+          <div class="repository">
+            <h2>Heroes</h2>
+            <p>Heroes description goes here</p>
+            <p class="tags">
+              <i class="fab fa-js">JavaScript</i> &nbsp;
+              <i class="fab fa-angular">Angular</i> &nbsp;
+              <i class="fab fa-js-square">Angular JS</i>&nbsp;
+              <i class="fab fa-angular">Angular 2+</i>
+            </p>
+          </div>
+  
+          <div class="repository">
+            <h2>Heroes</h2>
+            <p>Heroes description goes here</p>
+            <p class="tags">
+              <i class="fab fa-js">JavaScript</i> &nbsp;
+              <i class="fab fa-angular">React</i> &nbsp;
+            </p>
+          </div>
+  
+          <div class="repository">
+            <h2>Heroes</h2>
+            <p>Heroes description goes here</p>
+            <p class="tags">
+              <i class="fab fa-js">JavaScript</i> &nbsp;
+              <i class="fab fa-angular">Angular</i> &nbsp;
+              <i class="fab fa-js-square">Angular JS</i>&nbsp;
+              <i class="fab fa-angular">Angular 2+</i>
+            </p>
+          </div>
+  
+          <div class="repository">
+            <h2>Heroes</h2>
+            <p>Heroes description goes here</p>
+            <p class="tags">
+              <i class="fab fa-js">JavaScript</i> &nbsp;
+              <i class="fab fa-angular">React</i> &nbsp;
+            </p>
+          </div>
+        </div>
+      </div>
+      
+    </main>
+
+    <footer>
+      <nav class="pagination">
+        <a href="#prev" class="nav-link"> &laquo;</a>
+        <a href="#1">1</a>
+        <a href="#2">2</a>
+        <a href="#3">3</a>
+        <a href="#4">4</a>
+        <a href="#5">5</a>
+        <a href="#6">6</a>
+        <a href="#7">7</a>
+        <a href="#8">8</a>
+        <a href="#9">9</a>
+        <a href="#next" class="nav-link"> &raquo;</a>
+      </nav>
+      <div class="trns">
+        <button onclick="previousPage()">
+          <a href="#older" class="nav-link"><i class="fas fa-arrow-left"></i></a
+          >&nbsp;Older
+        </button>
+        <button onclick="nextPage()">
+          Newer &nbsp;<a href="#newer" class="nav-link"
+            ><i class="fas fa-arrow-right"></i
+          ></a>
+        </button>
+      </div>
+    </footer>
+
+    <script>
+      var repos = [
+        {
+          title: "Heroes",
+          description: "Heroes description goes here",
+          tags: ["JavaScript", "Angular", "AngularJS", "Angular 2+"],
+        },
+        {
+          title: "Heroes",
+          description: "Heroes description goes here",
+          tags: ["JavaScript", "React"],
+        },
+        {
+          title: "Heroes",
+          description: "Heroes description goes here",
+          tags: ["JavaScript", "Angular", "AngularJS", "Angular 2+"],
+        },
+        {
+          title: "Heroes",
+          description: "Heroes description goes here",
+          tags: ["JavaScript", "React"],
+        },
+        {
+          title: "Heroes",
+          description: "Heroes description goes here",
+          tags: ["JavaScript", "Angular", "AngularJS", "Angular 2+"],
+        },
+        {
+          title: "Heroes",
+          description: "Heroes description goes here",
+          tags: ["JavaScript", "React"],
+        },
+        {
+          title: "Heroes",
+          description: "Heroes description goes here",
+          tags: ["JavaScript", "Angular", "AngularJS", "Angular 2+"],
+        },
+        {
+          title: "Heroes",
+          description: "Heroes description goes here",
+          tags: ["JavaScript", "React"],
+        },
+      ];
+      var currentPage = 1;
+      var itemsPerPage = 6;
+
+      function showPage(page) {
+        var content = document.getElementById("content");
+        content.innerHTML = "";
+        for (
+          var i = (page - 1) * itemsPerPage;
+          i < page * itemsPerPage && i < repos.length;
+          i++
+        ) {
+          content.innerHTML += "<div>" + repos[i] + "</div>";
+        }
+      }
+
+      function previousPage() {
+        if (currentPage > 1) {
+          currentPage--;
+          showPage(currentPage);
+        }
+      }
+
+      function nextPage() {
+        if (currentPage < repos.length / itemsPerPage) {
+          currentPage++;
+          showPage(currentPage);
+        }
+      }
+
+      function showRepositories() {
+        var start = (currentPage - 1) * perPage;
+        var end = start + perPage;
+
+        var repositoriesToShow = repositories.slice(start, end);
+        console.log(repositoriesToShow);
+      }
+
+      function updatePagination() {
+        var totalPages = Math.ceil(repositories.length / perPage);
+        console.log(totalPages);
+      }
+
+      showRepositories();
+      updatePagination();
+
+      showPage(currentPage);
+    </script>
+    <!-- <script src="app.component.ts"></script> -->
+  </body>
+</html>

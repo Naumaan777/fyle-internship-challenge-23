@@ -1,0 +1,105 @@
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 12px;
+    margin-left: 25px;
+    border: 6px solid #fff; /* inner white border */
+    box-shadow: 0 0 0 3px #292323; /* outer black border */
+}
+
+.profile {
+    display: flex; /* Align the image and the bio side by side */
+}
+.bio {
+    margin-top: 16px;
+    margin-left: 50px; /* Add some space between the image and the bio */
+}
+.github {
+    margin-left: 25px; /* Add some space between the image and the bio */
+}
+
+.repository-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.repository {
+    border: 1px solid #000;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    flex-basis: calc(50% - 70px); /* width of each repository box */
+}
+
+.repository h2 {
+    color: rgb(77, 77, 250);
+    margin: 0;
+    margin-bottom: 10px;
+}
+.repository p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.repository .tags i {
+    margin-top: 18px;
+    padding: 8px;
+    border-radius: 4px;
+    border: 2px solid blue;
+    color: rgb(77, 77, 250);
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+.pagination a {
+    margin: -1px;
+    padding: 10px 15px;
+    border: 1px solid #000;
+    text-decoration: none;
+    color: #000;
+}
+
+.pagination a:hover{
+    color: white;
+    background-color: rgb(77, 77, 250);
+}
+
+.trns {
+    /* display: block; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-basis: calc(50% - 10px); 
+
+}
+
+/* .trns a {
+    margin: 0 5px;
+    padding: 10px 15px;
+    border: 1px solid #000;
+    text-decoration: none;
+    color: #000;
+} */
+.trns a:hover {
+    color: rgb(77, 77, 250);
+}
+.trns button {
+    display: inline-block;
+    align-items: center;
+    margin: 0 5px;
+    padding: 10px 15px;
+    border: 1px solid #000;
+    text-decoration: none;
+    color: #000;
+    border-radius: 20px;
+}
+
+.trns button:hover {
+    color: rgb(77, 77, 250);
+    cursor: pointer;
+}
